@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookLibrary.Service.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.API.Controllers
 {
@@ -13,8 +14,9 @@ namespace BookLibrary.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromServices]IBookService bookService)
         {
+            return Ok(bookService.Get());
         }
     }
 }
