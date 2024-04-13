@@ -12,7 +12,7 @@ namespace BookLibrary.Infra.Repositories
             _context = context;
         }
 
-        public IEnumerable<Book> Get()
+        public IQueryable<Book> Get()
         {
             return _context.Books;
         }

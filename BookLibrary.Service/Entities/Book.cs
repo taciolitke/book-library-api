@@ -11,5 +11,7 @@
         public string Type { get; set; }
         public string Isbn { get; set; }
         public string Category { get; set; }
+        public virtual string FullName { get => $"{FirstName} {LastName}"; }
+        public virtual int AvaibleCopies { get => TotalCopies - CopiesInUse; }
     }
 }

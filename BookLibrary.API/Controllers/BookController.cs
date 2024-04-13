@@ -1,4 +1,6 @@
-﻿using BookLibrary.Service.Services.Interfaces;
+﻿using BookLibrary.Service.Filters;
+using BookLibrary.Service.Services;
+using BookLibrary.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.API.Controllers
@@ -7,16 +9,16 @@ namespace BookLibrary.API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly ILogger<BookController> _logger;
-        public BookController(ILogger<BookController> logger)
+        private readonly IBookService _bookService;
+        public BookController(IBookService bookService)
         {
-            _logger = logger;
+            _bookService = bookService;
         }
 
         [HttpGet]
-        public IActionResult Get([FromServices]IBookService bookService)
+        public IActionResult Get([FromQuery]BookFilter bookFilter)
         {
-            return Ok(bookService.Get());
+            return Ok(_bookService.Get(bookFilter));
         }
     }
 }

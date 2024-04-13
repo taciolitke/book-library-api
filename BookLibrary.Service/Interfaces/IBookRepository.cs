@@ -4,6 +4,6 @@ namespace BookLibrary.Service.Interfaces
 {
     public interface IBookRepository
     {
-        IEnumerable<Book> Get();
+        IQueryable<Book> Get();
     }
 }
